@@ -17,6 +17,24 @@ body {
     align-items: center;
     justify-content: space-between;
     font-size: 50px;
+    border-radius: 5px, 5px, 0, 0;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+    height: 45px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+    height: 45px;
+
 }
 
 .questions {
