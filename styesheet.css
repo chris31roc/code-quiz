@@ -2,7 +2,7 @@
 
 :root {
     background-attachment: fixed;
-    background-image: url("/Assets/hw4-quiz-page.jpg");
+    background-image: url("Assets/hw4-quiz-page.jpg");
 }
 
 * {

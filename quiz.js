@@ -1,16 +1,16 @@
-var questions = document.querySelector("questions");
-var choices = Array.from(document.querySelectorAll("choice-text"));
-var scoreText = document.querySelector("questions");
-var questions = document.querySelector("questions");
-var questions = document.querySelector("questions");
+const question = document.querySelector("#questions");
+const choices = Array.from(document.querySelectorAll(".choice-text"));
+const scoreText = document.querySelector("#score-text");
+const scoreValue = document.querySelector("#score-value")
+// var questions = document.querySelector("questions");
 
 
-var currentQuestion = {};
-var score = 0;
-var questionCounter = 0;
-var availableQuestions = [];
+let currentQuestion = {};
+let score = 0;
+let questionCounter = 0;
+let availableQuestions = [];
 
-var questions = [
+let questions = [
     {
         question: "What Year Was Christopher Born In?",
         choice1: "1979",
@@ -58,24 +58,66 @@ var questions = [
     },
 ];
 
-var scorePoints = 100;
-var maxQuestions = 5;
+const scorePoints = 100;
+const maxQuestions = 5;
 
 startQuiz = () => {
     questionCounter = 0;
-    score = 0
-    availableQuestions = [ questions]
-    NewQuestion()
+    score = 0;
+    availableQuestions = [...questions]
+    newQuestion()
 }
 
-newQueestion = () => {
-    if(availableQuestions.length === 0 || questionsCounter > maxQuestions) {
+newQuestion = () => {
+    if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
         localStorage.setItem("recentScore", score)
         return window.location.assign("/end.html")
+    }    
 
         questionCounter++
-        var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
-        currentQuestions = availableQuestions[questionsIndex]
-        question.innerText = currentQuestion.question
-    }
+        
+        const questionIndex = Math.floor(Math.random() * availableQuestions.length)
+        currentQuestion = availableQuestions[questionIndex]
+        questions.innerText = currentQuestion.question
+
+        choices.forEach(choice => {
+            const number = choice.dataset["number"]
+            choice.innerText = currentQuestion["choice" + number]
+        })
+
+
+    
+    availableQuestions.splice(questionIndex, 1)
+    acceptingAnswers = "True"
 }
+
+choices.forEach(choice => {
+    choice.addEventListener("click", e => {
+        if(!acceptingAnswers) return
+    
+
+        acceptingAnswers = false
+        const selectedChoice = e.target
+        const selectedAnswer = selectedChoice.dataset("number")
+
+        let classToApply = selectedAnswer === currentQuestion.answer ? "correct" : "incorrect"
+
+        if(classToApply === "correct") {
+            incrementScore(scorePoints)
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply)
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply)
+            newQuestion()
+        }, 1000)
+    })    
+})
+
+incrementScore = num => {
+    score +=num
+    scoreText.innerText = score
+}
+
+startQuiz()
