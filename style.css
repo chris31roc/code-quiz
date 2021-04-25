@@ -1,0 +1,55 @@
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#container {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+#startTime {
+    background-color: purple;
+    color: white;
+    width: 100px;
+    height: 50px;
+    font-size: 100%;
+}
+
+#time {
+    position: absolute;
+    right: 10px;  
+}
+
+
+li {
+    background-color: purple;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    font-size: 18px;
+    color: white;
+}
+
+#createDiv {
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+}
+
+#Submit {
+    background-color: purple;
+    margin-left: 33%;
+    padding: 15px 32px;
+    font-size: 20px;
+    color: white;
+
+}
+
+#clear, #goBack {
+    background-color: purple;
+    font-size: 20px;
+    color: white;
+    }
