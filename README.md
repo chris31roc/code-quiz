@@ -1,6 +1,6 @@
 # Code Quiz
 
-![Photo of Application](./assets/.png)
+![Photo of Application](./Assets/code-quiz.png)
 
 
 # Link to Application
